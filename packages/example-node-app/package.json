@@ -1,0 +1,22 @@
+{
+  "name": "@fuel-ts/example-node-app",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "test": "jest",
+    "build-contract": "forc build -o src/main.sw.bin",
+    "typechain": "typechain --target=fuels --out-dir=src/main.sw.types 'src/**.abi.json'"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@fuel-ts/fuels": "^0.0.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "typechain-target-fuels": "^0.0.1",
+    "jest": "^27.3.1",
+    "typechain": "^5.2.0"
+  }
+}

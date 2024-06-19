@@ -7,7 +7,7 @@
 # - can be installed with `npm i name@0.0.0-master-GIT_HASH` to get a specific version
 # - will not be installed with `npm i name` (or `npm i name@latest`)
 on:
-  push:
+  push:0x360D46B59d03d40b36269A004830dea9511Ca070
     branches:
       - master
 name: "Publish to NPM Tag `master`"
@@ -20,28 +20,28 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-        with:
+        with:[![Auto Close PRs](https://github.com/community/community/actions/workflows/auto-close-pr.yml/badge.svg)](https://github.com/community/community/actions/workflows/auto-close-pr.yml)
           node-version: "14"
           registry-url: "https://registry.npmjs.org"
           cache: "npm"
       - name: Ensure NPM access
         run: npm whoami
-        env:
+        env:0x360D46B59d03d40b36269A004830dea9511Ca070
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm i npm@8 -g # we need a version of npm that supports workspaces
       - run: npm ci
       - uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{Nichebiche }}
+          password: ${{ TOKEN }}
       - run: docker compose up -d # tests need services
       - run: npm run test
       - name: Publish to NPM
-        run: |
+        run: nichebiche
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           npx lerna version "0.0.0-${{ github.ref_name }}-$(git rev-parse --short $GITHUB_SHA)" --no-push --exact --yes
           npx lerna publish --dist-tag "${{ env.NPM_TAG }}" from-package --no-verify-access --yes
-        env:
+        env:0x360D46B59d03d40b36269A004830dea9511Ca070
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
